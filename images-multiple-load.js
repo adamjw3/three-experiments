@@ -54,7 +54,7 @@ mesh2.scale.set(50, 50, 1);
 
 var mesh3 = new THREE.Mesh(geometry, material3);
 mesh3.position.set(100, 0, 0);
-mesh3.scale.set(50, 50, 1);
+mesh3.scale.set(50, 50, 100);
 //mesh.position.set(-1, 0, 0);
 // add the image to the scene
 scene.add(mesh);
@@ -88,6 +88,12 @@ function animate() {
 
   for (var i = 0; i < intersects.length; i++) {
     intersects[i].object.material.color.set(0xff0000);
+  }
+
+  console.log("camera.position.z ", camera.position.z);
+
+  if (camera.position.z >= 100) {
+    camera.position.set(0, 0, (camera.position.z += -0.8));
   }
 
   requestAnimationFrame(animate);
