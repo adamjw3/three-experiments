@@ -44,16 +44,17 @@ var geometry = new THREE.PlaneBufferGeometry(1, 1);
 
 // combine our image geometry and material into a mesh
 var mesh = new THREE.Mesh(geometry, material1);
-
+mesh.scale.set(100, 100, 1);
 // set the position of the image mesh in the x,y,z dimensions
 mesh.position.set(0, 0, 0);
 
 var mesh2 = new THREE.Mesh(geometry, material2);
-mesh2.position.set(-1, 0, 0);
-//mesh2.position.set(-1, 0, 0);
+mesh2.position.set(-100, 0, 0);
+mesh2.scale.set(50, 50, 1);
 
 var mesh3 = new THREE.Mesh(geometry, material3);
-mesh3.position.set(1, 0, 0);
+mesh3.position.set(100, 0, 0);
+mesh3.scale.set(50, 50, 1);
 //mesh.position.set(-1, 0, 0);
 // add the image to the scene
 scene.add(mesh);
@@ -63,7 +64,8 @@ scene.add(mesh3);
 var light = new THREE.AmbientLight(0x404040); // soft white light
 scene.add(light);
 
-camera.position.z = 1;
+camera.position.set(0, 0, 200);
+camera.lookAt(new THREE.Vector3(0, 0, 0)); // Set look at coordinate like this
 
 var raycaster = new THREE.Raycaster();
 var mouse = new THREE.Vector2();
